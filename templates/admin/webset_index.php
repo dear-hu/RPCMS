@@ -61,8 +61,6 @@ $(document).ready(function(){
 			param={
 				'isDevelop':0,
 				'webStatus':0,
-				'webReg':0,
-				'webVcode':0,
 				'cateAlias':0,
 				'logAlias':0,
 				'pageAlias':0,
