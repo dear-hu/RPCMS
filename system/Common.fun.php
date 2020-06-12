@@ -695,7 +695,7 @@ function rpMsg($msg, $url = 'javascript:history.back(-1);', $isAuto = false){
 		$heading="Error Occurred";
 		$message=array();
 		$trace = debug_backtrace();
-		if(isset($trace[1]['args'][0]) && method_exists($trace[1]['args'][0],'getTrace')){
+		if(isset($trace[1]['args'][0]) && is_object($trace[1]['args'][0]) && method_exists($trace[1]['args'][0],'getTrace')){
 			$error.='<br>'.$trace[1]['args'][0]->getFile().'&nbsp;&nbsp;&nbsp;&nbsp;Line:  '.$trace[1]['args'][0]->getLine();
 			$trace=$trace[1]['args'][0]->getTrace();
 		}
