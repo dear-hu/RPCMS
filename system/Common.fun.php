@@ -330,7 +330,7 @@ function formatDate($time,$level=7){
 	foreach($interval as $k=>$v){
 		if($k <= $level && $v['time'] <= $etime && $etime < $interval[$k+1]['time']){
 			$d = $etime / $v['time'];
-			return str_replace('%date%',date('Y-m-d',$time),round($d) . $v['str']);
+			return str_replace('%date%',date('Y-m-d H:i:s',$time),round($d) . $v['str']);
 		}
 	}
 	return date('Y-m-d H:i:s',$time);

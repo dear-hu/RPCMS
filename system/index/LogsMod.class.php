@@ -50,6 +50,12 @@ class LogsMod{
 		return $this;
 	}
 	
+	public function search($title){
+		$title=strip_tags(strDeep($title));
+		$this->whereArr['a.title|a.content']=array('like','%'.$title.'%');
+		return $this;
+	}
+	
 	public function tages($id){
 		$this->whereArr['a.tages']=array('find_in_set',$id);
 		return $this;

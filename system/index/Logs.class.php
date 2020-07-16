@@ -67,7 +67,7 @@ class Logs extends base{
 		if(empty($key)){
 			redirect($this->App->baseUrl);
 		}
-		$logData=$this->LogsMod->title($key)->page($page)->order(array('a.upateTime'=>'desc','a.id'=>'desc'))->select();
+		$logData=$this->LogsMod->search($key)->page($page)->order(array('a.upateTime'=>'desc','a.id'=>'desc'))->select();
 		$pageHtml=pageInationHome($logData['count'],$logData['limit'],$logData['page'],'search',$key);
 		$key2='搜索 '.$key;
 		$this->setKeywords();

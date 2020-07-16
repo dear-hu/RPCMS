@@ -129,4 +129,39 @@ class Index extends Base{
 		}
 		return json(array('code'=>200, 'msg'=>'更新成功'));
 	}
+	
+	public function upload(){
+		$files=isset($_FILES['files']) ? $_FILES['files'] : '';
+		if(empty($files)){
+			return json(array('code'=>-1, 'msg'=>'请选择文件'));
+		}
+		if(count($files) == count($files,true)){
+			return json(uploadFiles($files));
+		}else{
+			$data=array(
+				'successUrl'=>[],
+				'successNum'=>0,
+				'errorFile'=>[],
+				'errorNum'=>0,
+			);
+			foreach($files['error'] as $k=>$v){
+				$file=array(
+					'name'=>$files['name'][$k],
+					'type'=>$files['type'][$k],
+					'tmp_name'=>$files['tmp_name'][$k],
+					'error'=>$files['error'][$k],
+					'size'=>$files['size'][$k],
+				);
+				$res=uploadFiles($file);
+				if($res['code'] == 200){
+					$data['successNum']++;
+					$data['successUrl'][]=$res['data'];
+				}else{
+					$data['errorNum']++;
+					$data['errorFile'][]=$file['name'].'，'.$res['msg'];
+				}
+			}
+			return json(array('code'=>200, 'msg'=>'success', 'data'=>$data));
+		}
+	}
 }

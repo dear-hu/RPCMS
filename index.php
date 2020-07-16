@@ -17,7 +17,7 @@ defined('LIBPATH') or define('LIBPATH', CMSPATH . '/system');
 defined('PLUGINPATH') or define('PLUGINPATH', CMSPATH . '/plugin');
 defined('TMPPATH') or define('TMPPATH', CMSPATH . '/templates');
 defined('UPLOADPATH') or define('UPLOADPATH',  'uploads');
-defined('RPCMS_VERSION') or define('RPCMS_VERSION',  '1.5.2');
+defined('RPCMS_VERSION') or define('RPCMS_VERSION',  @file_get_contents(CMSPATH . '/data/defend/sersion.txt'));
 include_once LIBPATH . '/Common.fun.php';
 spl_autoload_register("autoLoadClass");
 doStrslashes();
