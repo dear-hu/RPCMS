@@ -16,12 +16,12 @@ class Index extends Plugin{
 	
 	/*插件安装*/
 	public function install(){
-		//echo 11;
+		$this->checkFormAdmin();
 	}
 	
 	/*插件卸载*/
 	public function uninstall(){
-		//echo 22;
+		$this->checkFormAdmin();
 	}
 
 	/*
@@ -43,6 +43,7 @@ class Index extends Plugin{
 	
 	
 	public function index(){
+		$this->checkFormAdmin();
 		$curl=new \plugin\appcenter\lib\send();
 		$action=!empty(input('act')) ? input('act') : 'index';
 		$parse=parse_url(input('server.REQUEST_URI'));

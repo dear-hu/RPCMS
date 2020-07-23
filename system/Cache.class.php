@@ -17,9 +17,11 @@ class Cache{
 	
 	protected static $instance;
 	protected static $cacheData=array();
+	private $prefix='';
 	
 	public function __construct(){
-		
+		$options=Config::get('db');
+		$this->prefix=$options["prefix"];
 	}
 	
 	public static function instance(){
@@ -86,7 +88,11 @@ class Cache{
 	
 	/*用户缓存*/
 	private function me_user(){
-		$user=Db::name('user')->where('status = 0')->field('id,username,nickname,role,status')->select();
+		$user=Db::name('user')->alias('a')->join(array(
+			array('(select authorId,count(*) as logNum FROM '.$this->prefix.'logs where status =0 group by authorId) b','a.id=b.authorId','left'),
+			array('(select authorId,count(*) as pageNum FROM '.$this->prefix.'pages where status =0 group by authorId) c','a.id=c.authorId','left'),
+			array('(select authorId,count(*) as commentNum FROM '.$this->prefix.'comment where status =0 group by authorId) d','a.id=d.authorId','left'),
+		))->where('a.status = 0')->field('a.id,a.username,a.nickname,a.role,a.status,b.logNum,c.pageNum,d.commentNum')->select();
 		$user=array_column($user,NULL,'id');
 		$this->cacheWrite(json_encode($user), 'user');
 	}
@@ -196,9 +202,7 @@ class Cache{
 	/*分类缓存*/
 	private function me_category() {
         $cate_cache = array();
-		$options=Config::get('db');
-		$prefix=$options["prefix"];
-		$category=Db::name('category')->alias('a')->join('(select cateId,count(*) as logNum FROM '.$prefix.'logs where status =0 group by cateId) b','a.id=b.cateId','left')->order(array('a.topId'=>'asc','a.sort'=>'ASC'))->field('a.*,b.logNum')->select();
+		$category=Db::name('category')->alias('a')->join('(select cateId,count(*) as logNum FROM '.$this->prefix.'logs where status =0 group by cateId) b','a.id=b.cateId','left')->order(array('a.topId'=>'asc','a.sort'=>'ASC'))->field('a.*,b.logNum')->select();
 		foreach($category as $k=>$v){
 			$cate_cache[$v['id']]=$v;
 			$cate_cache[$v['id']]['children']=array();
