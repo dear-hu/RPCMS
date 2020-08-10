@@ -6,8 +6,8 @@ use rp\Hook;
 
 class Base{
 	protected $user;
-	protected $me_alias=array('index','post','search','author','category','html','tag','date','plugin','page');
-	protected $me_tmpName=array('common','setting','password','index','list','page','search','detail','default','hook');
+	protected $me_alias=array('index','post','search','author','category','html','tag','date','plugin','page','special');
+	protected $me_tmpName=array('common','setting','password','index','list','page','search','detail','default','hook','special');
 	protected $App;
 	protected $isAjax=false;
 	

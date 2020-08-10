@@ -35,6 +35,10 @@ return array(
 		'pattern'=>'|^category/(\w+)(_(\d+))?/?$|',
 	),
 	array(
+		'model'=>'index/special/index',
+		'pattern'=>'|^special/(\w+)(_(\d+))?/?$|',
+	),
+	array(
 		'model'=>'index/pages/index',
 		'pattern'=>'|^html/(\w+)(_(\d+))?/?$|',
 	),

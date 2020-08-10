@@ -60,6 +60,7 @@ class Comment extends Base{
 			'topId'=>$id,
 			'authorId'=>$comment['authorId'],
 			'userId'=>$this->user['id'],
+			'levels'=>$comment['levels'] + 1,
 			'nickname'=>$this->user['nickname'],
 			'home'=>$this->App->baseUrl,
 			'content'=>$content,

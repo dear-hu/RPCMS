@@ -25,7 +25,7 @@ class Upgrade extends Base{
 		foreach($resArr['data'] as $k=>$v){
 			$path=CMSPATH.$v['name'];
 			if(!file_exists($path) || @md5_file($path) != $v['md5']){
-				if(preg_match('/([\w\.]+)-update\.sql/i', $v['name'], $matches) && $matches[1] < RPCMS_VERSION){
+				if(preg_match('/([\w\.]+)-update\.sql/i', $v['name'], $matches) && $matches[1] <= RPCMS_VERSION){
 					continue;
 				}
 				$v['type']= file_exists($path) ? '<span style="color:red">更新</span>' : '新增';

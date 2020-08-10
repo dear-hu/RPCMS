@@ -213,6 +213,13 @@ class Cache{
         $this->cacheWrite(json_encode($cate_cache), 'category');
     }
 	
+	/*专题缓存*/
+	private function me_special() {
+		$special=Db::name('special')->alias('a')->join('(select specialId,count(*) as logNum FROM '.$this->prefix.'logs where status =0 group by specialId) b','a.id=b.specialId','left')->field('a.*,b.logNum')->select();
+		$special = array_column($special,NULL,'id');
+        $this->cacheWrite(json_encode($special), 'special');
+    }
+	
 	/*友情链接缓存*/
 	private function me_links() {
 		$links=Db::name('links')->where('status =0')->field('sitename,sitedesc,siteurl')->order('sort','asc')->select();

@@ -47,6 +47,7 @@
 			{$categoryHtml}
 		</select></div>
 		<div class="me_input"><label>作者</label><select name="authorId">{$authorHtml}</select></div>
+		<div class="me_input"><label>专题</label><select name="specialId">{$specialHtml}</select></div>
 		<div class="me_input"><label>别名</label><input type="text" name="alias" value="{$logData['alias']|default=''}" placeholder="仅大小写字母数字和-"></div>
 		<div class="me_input"><label>密码</label><input type="text" name="password" value="{$logData['password']|default=''}"></div>
 		<div class="me_input"><label>模板</label><input type="text" name="template" placeholder="指定模板请输入模板名称" value="{$logData['template']|default=''}"></div>

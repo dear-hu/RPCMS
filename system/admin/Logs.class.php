@@ -73,6 +73,7 @@ class Logs extends Base{
 		View::assign('logData',$logData);
 		View::assign('categoryHtml',me_createCateOption());
 		View::assign('authorHtml',me_createAuthorOption());
+		View::assign('specialHtml',me_createSpecialOption());
 		return View::display('/logs_add');
 	}
 	
@@ -97,6 +98,7 @@ class Logs extends Base{
 		View::assign('logData',$logData);
 		View::assign('categoryHtml',me_createCateOption($logData['cateId']));
 		View::assign('authorHtml',me_createAuthorOption($logData['authorId']));
+		View::assign('specialHtml',me_createSpecialOption($logData['specialId']));
 		return View::display('/logs_add');
 	}
 	
@@ -115,6 +117,7 @@ class Logs extends Base{
 		$data['excerpt']=!empty(strip_tags($param['excerpt'])) ? strip_tags($param['excerpt']) : getContentByLength($param['content']);
 		$data['cateId']=intval($param['cateId']);
 		$data['authorId']=intval($param['authorId']);
+		$data['specialId']=intval($param['specialId']);
 		$data['alias']=strip_tags($param['alias']);
 		$data['password']=strip_tags($param['password']);
 		$data['template']=strip_tags($param['template']);
@@ -246,6 +249,7 @@ class Logs extends Base{
 	private function updateCache(){
 		Cache::update('tages');
 		Cache::update('category');
+		Cache::update('special');
 		Cache::update('total');
 		Cache::update('logRecord');
 		Cache::update('logAlias');

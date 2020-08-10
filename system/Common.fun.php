@@ -662,6 +662,14 @@ function me_createAuthorOption($authorId=''){
 	}
 	return $html;
 }
+function me_createSpecialOption($specialId=''){
+	$special=rp\Cache::read('special');
+	$html='<option value="0">选择专题</option>';
+	foreach($special as $value){
+		$html.='<option value="'.$value['id'].'" '.($value["id"] == $specialId ? "selected" : "").'>'.$value['title'].'</option>';
+	}
+	return $html;
+}
 
 
 function Debug_Error_Handler($errno, $errstr, $errfile, $errline){

@@ -134,6 +134,12 @@ function mianbao($type,$value){
 				$html.='<a href="'.Url::cate($value).'">'.$category[$value]['cate_name'].'</a>';
 			}
 			break;
+		case 'special':
+			$special=Cache::read('special');
+			if(isset($special[$value])){
+				$html.='<a href="'.Url::special($value).'">'.$special[$value]['title'].'</a>';
+			}
+			break;
 		case 'page':
 			$pages=Cache::read('pages');
 			if(isset($pages[$value])){

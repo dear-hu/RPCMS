@@ -30,6 +30,7 @@
 				<div class="me_input me_input_line"><label>启用文章别名</label><input type="checkbox" name="logAlias" value="1" {if isset($option['logAlias']) && $option['logAlias'] == 1}checked{/if}></div>
 				<div class="me_input me_input_line"><label>启用单页别名</label><input type="checkbox" name="pageAlias" value="1" {if isset($option['pageAlias']) && $option['pageAlias'] == 1}checked{/if}></div>
 				<div class="me_input me_input_line"><label>启用标签别名</label><input type="checkbox" name="tagAlias" value="1" {if isset($option['tagAlias']) && $option['tagAlias'] == 1}checked{/if}></div>
+				<div class="me_input me_input_line"><label>启用专题别名</label><input type="checkbox" name="specialAlias" value="1" {if isset($option['specialAlias']) && $option['specialAlias'] == 1}checked{/if}></div>
 			</div>
 			<div id="tab3" class="tab">
 				<div class="me_input me_input_line"><label>缩略图</label>

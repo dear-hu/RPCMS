@@ -127,6 +127,20 @@ class Url{
 		return $cateUrl;
 	}
 	
+	/*专题URL*/
+	public static function special($specialId, $page=null){
+		global $App;
+		$special=Cache::read('special');
+		if(!isset($special[$specialId])){
+			return $App->baseUrl;
+		}
+		$specialUrl = $App->baseUrl.'/special/';
+		$specialUrl.= (Config::get('webConfig.specialAlias') && !empty($special[$specialId]['alias'])) ? $special[$specialId]['alias'] : $specialId;
+		$specialUrl.= !empty($page) ? '_'.$page : '';
+		$specialUrl.= '.'.$App->pageExt;
+		return $specialUrl;
+	}
+	
 	/*单页URL*/
 	public static function page($pageId){
 		global $App;
@@ -212,6 +226,8 @@ class Url{
 				return self::logs($data,$page);
 			case 'cate':
 				return self::cate($data,$page);
+			case 'special':
+				return self::special($data,$page);
 			case 'page':
 				return self::page($data,$page);
 			case 'tag':

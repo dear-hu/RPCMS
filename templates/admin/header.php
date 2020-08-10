@@ -30,6 +30,7 @@
 		<li class="menu_item" data-type="nav"><a href="{:url('nav/index')}"><i class="me-icon me-icon-spread-left"></i><span>导航</span></a></li>
 		<li class="menu_item" data-type="category"><a href="{:url('category/index')}"><i class="me-icon me-icon-flag"></i><span>分类</span></a></li>
 		<li class="menu_item" data-type="tages"><a href="{:url('tages/index')}"><i class="me-icon me-icon-note"></i><span>标签</span></a></li>
+		<li class="menu_item" data-type="special"><a href="{:url('special/index')}"><i class="me-icon me-icon-engine"></i><span>专题</span></a></li>
 		<li class="menu_item" data-type="comment"><a href="{:url('comment/index')}"><i class="me-icon me-icon-dialogue"></i><span>评论{$commentExamNum ? '('.$commentExamNum.')' : ''}</span></a></li>
 		<li class="menu_item" data-type="user"><a href="{:url('user/index')}"><i class="me-icon me-icon-user"></i><span>用户</span></a></li>
 		<li class="menu_item" data-type="links"><a href="{:url('links/index')}"><i class="me-icon me-icon-link"></i><span>友链</span></a></li>
