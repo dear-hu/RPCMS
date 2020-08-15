@@ -86,6 +86,7 @@ CREATE TABLE IF NOT EXISTS `%pre%logs` (
   `alias` varchar(200) DEFAULT '',
   `authorId` int(10) NOT NULL COMMENT '作者ID',
   `cateId` int(10) NOT NULL COMMENT '分类ID',
+  `specialId` INT(11) NULL DEFAULT '0',
   `excerpt` varchar(255) NOT NULL COMMENT '摘要',
   `password` varchar(255) DEFAULT '' COMMENT '访问密码',
   `content` longtext NOT NULL,
@@ -190,3 +191,18 @@ CREATE TABLE IF NOT EXISTS `%pre%user` (
   KEY `username` (`username`),
   KEY `role` (`role`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户表';
+
+CREATE TABLE IF NOT EXISTS `%pre%special` (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) NOT NULL,
+  `subTitle` varchar(255) NULL DEFAULT '',
+  `headimg` varchar(255) NULL DEFAULT '',
+  `alias` varchar(200) NULL DEFAULT '',
+  `seo_desc` text,
+  `upnum` int(10) DEFAULT '0' COMMENT '点赞量',
+  `temp_list` varchar(200) DEFAULT '',
+  `createTime` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `alias` (`alias`),
+  KEY `title` (`title`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='专题';
