@@ -124,7 +124,7 @@ class Comment extends Base{
 			!empty($v['logId']) && $logIds[]=$v['logId'];
 			!empty($v['pageId']) && $pageIds[]=$v['pageId'];
 		}
-		$res1=$res1=array();
+		$res1=$res2=array();
 		!empty($logIds) && $res1=Db::name('comment')->where(array('topId'=>array('<>',0),'logId'=>array('in',join(',',$logIds))))->field('id,topId')->order('id','asc')->select();
 		!empty($pageIds) && $res2=Db::name('comment')->where(array('topId'=>array('<>',0),'pageId'=>array('in',join(',',$pageIds))))->field('id,topId')->order('id','asc')->select();
 		$sonList=array_filter(array_merge($res1,$res2));
