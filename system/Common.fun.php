@@ -313,7 +313,7 @@ function formatBysize($size) {
 }
 
 /*日期格式化*/
-function formatDate($time,$level=7){
+function formatDate($time,$level=7,$format='Y-m-d H:i:s'){
 	$time = strtotime($time);
 	$etime = time() - $time;
 	if($etime < 1){return '刚刚';}
@@ -330,10 +330,10 @@ function formatDate($time,$level=7){
 	foreach($interval as $k=>$v){
 		if($k <= $level && $v['time'] <= $etime && $etime < $interval[$k+1]['time']){
 			$d = $etime / $v['time'];
-			return str_replace('%date%',date('Y-m-d H:i:s',$time),round($d) . $v['str']);
+			return str_replace('%date%',date($format,$time),round($d) . $v['str']);
 		}
 	}
-	return date('Y-m-d H:i:s',$time);
+	return date($format,$time);
 }
 
 
