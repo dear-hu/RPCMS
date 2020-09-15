@@ -5,6 +5,12 @@
  * Date: 14-04-09
  * Time: 上午10:17
  */
+if(!defined('CMSPATH')){
+    header("HTTP/1.1 404 Not Found");
+	header("Status: 404 Not Found");
+	exit;
+}
+ 
 include "Uploader.class.php";
 
 /* 上传配置 */

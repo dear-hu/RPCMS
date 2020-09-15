@@ -18,6 +18,10 @@ doStrslashes();
 \rp\Config::set(include_once CMSPATH . '/config.php');
 \rp\Config::set('webConfig',\rp\Cache::read('option'));
 
+if(!isLogin() && !session('MEUSER')){
+	return json(array('code'=>-1, 'msg'=>'请先登录'));
+}
+
 function getUEConfig(){
 	$meConfig=\rp\Config::get('webConfig');
 	$uploadPath='/'.(!empty(\rp\Config::get('app_default_path')) ? \rp\Config::get('app_default_path').'/' : '').UPLOADPATH;
