@@ -98,7 +98,7 @@ function related($data,$type='cate',$limit=10){
 /*友情链接*/
 function links(){
 	$links=Cache::read('links');
-	$linksHtml='<ul class="links">';
+	$linksHtml='<ul class="links"><li>友情链接：</li>';
 	foreach($links as $k=>$v){
 		$linksHtml.='<li><a href="'.$v['siteurl'].'" target="_blank" title="'.$v['sitedesc'].'">'.$v['sitename'].'</a></li>';
 	}
@@ -165,7 +165,7 @@ function comment_list($CommentData){
 			<div class="comment_content">
 				<p class="comment_name">
 					<a href="'.(!empty($comment['home']) ? $comment['home'] : 'javascript:;').'" rel="nofollow" target="_blank">'.$comment['nickname'].'</a>
-					<span class="comment_time"><i class="iconfont icon-time"></i> '.formatDate($comment['createTime']).' ('.$comment['createTime'].')</span>
+					<span class="comment_time"><i class="iconfont icon-time"></i> '.formatDate($comment['createTime']).'</span>
 					<button type="button" class="quickReplay"><i class="iconfont icon-comment"></i>回复</button>
 				</p>
 				<p class="comment_info"><i class="iconfont"></i>'.$comment['content'].'</p>
@@ -185,7 +185,7 @@ function comment_list_children($children,$commentsData){
 				<div class="comment_content">
 					<p class="comment_name">
 						<a href="'.(!empty($comment['home']) ? $comment['home'] : 'javascript:;').'" rel="nofollow" target="_blank">'.$comment['nickname'].'</a>
-						<span class="comment_time"><i class="iconfont icon-time"></i> '.formatDate($comment['createTime']).' ('.$comment['createTime'].')</span>
+						<span class="comment_time"><i class="iconfont icon-time"></i> '.formatDate($comment['createTime']).'</span>
 						<button type="button" class="quickReplay"><i class="iconfont icon-comment"></i>回复</button>
 					</p>
 					<p class="comment_info"><i class="iconfont"></i>'.$comment['content'].'</p>

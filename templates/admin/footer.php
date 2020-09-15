@@ -1,3 +1,4 @@
+<?php if (!defined('CMSPATH')){exit('error!');}?>
 	<div class="me_model me_anim_bounce me_model_updateAdmin" style="width: 24rem">
 		<div class="title">修改密码</div>
 		<a class="me-icon me-icon-close me_model_close" href="javascript:;"  data-callback="reaset"></a>

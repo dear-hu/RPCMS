@@ -1,3 +1,4 @@
+<?php if (!defined('CMSPATH')){exit('error!');}?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -70,7 +71,7 @@
 				"<div class='me_input'><label>数据库名称</label><input type='text' name='dbname' class='dbname' value=''></div>",
 				"<div class='me_input'><label>数据表前缀</label><input type='text' name='tablepre' class='tablepre' value='rp_'></div>",
 				"<p class='group_title'>管理员信息</p>",
-				"<div class='me_input'><label>自定义地址</label><input type='text' name='diyname' class='diyname' value=''><span class='tips'>自定义的后台访问地址，默认admin</span></div>",
+				"<div class='me_input'><label>自定义地址</label><input type='text' name='diyname' class='diyname' value=''><span class='tips'>自定义的后台访问地址，为空则默认为admin</span></div>",
 				"<div class='me_input'><label>管理员名称</label><input type='text' name='username' class='username' value=''></div>",
 				"<div class='me_input'><label>管理员密码</label><input type='text' name='userpsw' class='userpsw' value=''></div>",
 			].join(''));
@@ -120,7 +121,7 @@
 				},
 				success:function(res){
 					if(res.code == 200){
-						$(".content").html('<div class="successBox"></div><div class="successBtn"><a href="'+res.data+'/'+diyname+'" class="color">访问后台</a><a href="'+res.data+'">立即体验</a></div>');
+						$(".content").html('<div class="successBox"><div class="msg"><b>恭喜，安装完成！</b><p>为了系统安全，请手动删除install应用模块或更换文件夹名称</p></div></div><div class="successBtn"><a href="'+res.data+'/'+diyname+'" class="color">访问后台</a><a href="'+res.data+'">立即体验</a></div>');
 						$(".footer").html('');
 					}else{
 						alert(res.msg);

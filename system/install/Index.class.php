@@ -8,8 +8,18 @@ use rp\Cache;
 class Index{
 	private $links;
 	
+	public function __construct(){
+		global $App;
+		if(file_exists(CMSPATH .'/data/install.lock')){
+			if($App->isAjax()){
+				return json(array('code'=>404, 'msg'=>'404 Not Found'));
+			}else{
+				return rpMsg('404');
+			}
+		}
+	}
+	
 	public function index(){
-		
 		return View::display('/index');
 	}
 	
@@ -125,7 +135,7 @@ class Index{
 		//禁止通过URL访问的module，多个用“,”隔开
 		'deny_module'			 => '',
 		//自定义后台地址，请勿和伪静态命名和二级域名重复，否则可能会被规则覆盖
-		'diy_admin'        		 => '".$data['diyname']."',
+		'diy_admin'        		 => '".($data['diyname'] == 'admin' ? '' : $data['diyname'])."',
 		//url后缀
 		'url_html_suffix'        => 'html',
 		//是否缓存模板，当适用模板标签的时候必须开启

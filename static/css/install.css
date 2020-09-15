@@ -20,7 +20,10 @@ a,button{cursor:pointer;outline:none;}
 .me_input input{height: 1.8rem;line-height: 1.8rem;border: 1px solid #ccc;padding: 0 0.3rem;width: 14rem;float:left;}
 .me_input select{height: 1.8rem;line-height: 1.8rem;padding: 0 0.5rem;}
 .me_input textarea{width: 25rem;height: 8rem;padding:0.3rem;}
-.successBox{height: 60%;background: #19afdc;margin-left: -1rem;margin-right: -1rem;}
+.successBox{height: 60%;background: #19afdc;margin-left: -1rem;margin-right: -1rem;color: #fff;}
+.successBox .msg{padding-top: 4rem;}
+.successBox .msg b{font-size: 2rem;}
+.successBox .msg p{margin-top: 2rem;color: #fbff00;}
 .successBtn{height: 40%;padding: 7rem 0;text-align: center;}
 .successBtn a{border: 1px solid #b3dce8;padding: 1rem 3rem;border-radius: 1.5rem;margin: 0 2rem;background: #eefbff;text-decoration: none;color: #333;}
 .successBtn a.color{background: #19afdc;color: #fff;border-color: #19afdc;}
