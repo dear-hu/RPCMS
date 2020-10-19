@@ -17,5 +17,5 @@ RPCMS是一款基于PHP+MYSQL的轻量型内容管理/博客系统，支持PHP5.
 
 #### 官方说明
 
-RPCMS官网：www.rpcms.cn  
-RPCMS帮助文档：www.rpcms.cn/help/index.html
+RPCMS官网：[www.rpcms.cn](http://www.rpcms.cn)  
+RPCMS帮助文档：[www.rpcms.cn/help/index.html](http://www.rpcms.cn/help/index.html)  
