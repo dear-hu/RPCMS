@@ -42,7 +42,7 @@ class Index{
 			'config.php'=>GetFilePermsOct(CMSPATH . '/config.php'),
 			'data'=>GetFilePermsOct(CMSPATH . '/data'),
 			'plugin'=>GetFilePermsOct(CMSPATH . '/plugin'),
-			'templates'=>GetFilePermsOct(CMSPATH . '/templates'),
+			'templates/index'=>GetFilePermsOct(CMSPATH . '/templates/index'),
 			'uploads'=>GetFilePermsOct(CMSPATH . '/uploads'),
 		);
 		if(function_exists("gd_info")){
@@ -57,9 +57,13 @@ class Index{
 		}
 		//$data['config.php'] = $data['config.php'] == '0755' ? $data['config.php'] : '<font>不可写'.$data['config.php'].'</font>';
 		$data['data'] = $data['data'] >= '0755' ? $data['data'] : '<font>不可写</font>';
+		$data['data'] .= $this->getOwner(CMSPATH . '/data') != 'www' ? '<font> 非www用户</font>' : '';
 		$data['plugin'] = $data['plugin'] >= '0755' ? $data['plugin'] : '<font>不可写</font>';
-		$data['templates'] = $data['templates'] >= '0755' ? $data['templates'] : '<font>不可写</font>';
+		$data['plugin'] .= $this->getOwner(CMSPATH . '/plugin') != 'www' ? '<font> 非www用户</font>' : '';
+		$data['templates/index'] = $data['templates/index'] >= '0755' ? $data['templates/index'] : '<font>不可写</font>';
+		$data['templates/index'] .= $this->getOwner(CMSPATH . '/templates/index') != 'www' ? '<font> 非www用户</font>' : '';
 		$data['uploads'] = $data['uploads'] >= '0755' ? $data['uploads'] : '<font>不可写</font>';
+		$data['uploads'] .= $this->getOwner(CMSPATH . '/uploads') != 'www' ? '<font> 非www用户</font>' : '';
 		return json(array('code'=>200, 'msg'=>'success', 'data'=>$data));
 	}
 	
@@ -188,5 +192,12 @@ class Index{
 		}
 		return $ret;
 	}
-
+	
+	private function getOwner($file){
+		if(strtoupper(substr(PHP_OS,0,3)) != 'WIN'){
+			$owner=posix_getpwuid(fileowner($file));
+			return $owner['name'];
+		}
+		return 'www';
+	}
 }
