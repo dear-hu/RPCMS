@@ -50,6 +50,7 @@ class Index extends Plugin{
 		parse_str($parse['query'],$query);
 		$data=array_slice($query,1);
 		$data['token']=$this->token;
+		$data['host']=$this->App->baseUrl;
 		switch($action){
 			case 'index':
 				$res=$curl->http_curl('index',$data);
