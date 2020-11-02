@@ -89,14 +89,14 @@ class Logs extends base{
 			$logAlias2=array_flip($logAlias);
 			$logId=isset($logAlias2[$dateStr]) ? $logAlias2[$dateStr] : '';
 		}
-		if(empty($logId)){
+		$data=Db::name('logs')->where('id='.$logId)->find();
+		if(empty($logId) || empty($data)){
 			rpMsg('当前文章不存在！');
 		}
-		$category=Cache::read('category');
-		$data=Db::name('logs')->where('id='.$logId)->find();
 		if($data['status'] != 0){
 			rpMsg('当前文章未发布，请等待发布后再查看！');
 		}
+		$category=Cache::read('category');
 		$data['cateName']=isset($category[$data['cateId']]['cate_name']) ? $category[$data['cateId']]['cate_name'] : '未分类';
 		$GLOBALS['title']=$data['title'];
 		$this->assign('title',$data['title'].'-'.$data['cateName'].'-'.$this->webConfig['webName']);
