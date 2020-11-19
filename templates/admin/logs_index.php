@@ -56,7 +56,7 @@
 				<th>标题</th>
 				<th>分类</th>
 				<th>作者</th>
-				<th>评论</th>
+				<th>评论/点赞</th>
 				<th>阅读</th>
 				<th>时间</th>
 			</tr> 
@@ -81,7 +81,7 @@
 					</td>
 					<td>{if !empty($v['cate_name'])}{$v['cate_name']}{else}未分类{/if}</td>
 					<td>{$v['nickname']}</td>
-					<td>{$v['comnum']}</td>
+					<td>{$v['comnum']} / {$v['upnum']}</td>
 					<td>{$v['views']}</td>
 					<td>{$v['createTime']}</td>
 				</tr> 

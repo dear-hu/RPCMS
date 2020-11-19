@@ -49,7 +49,7 @@ class Logs extends Base{
 		$res=Db::name('logs')->alias('a')->join(array(
 			array('category b','a.cateId=b.id','left'),
 			array('user c','a.authorId=c.id','left'),
-		))->where($where)->field('a.id,a.title,a.comnum,a.views,a.isTop,a.createTime,a.status,b.cate_name,c.nickname')->order(array('a.isTop'=>'desc','a.id'=>'desc'))->limit(($page-1)*$limit.','.$limit)->select();
+		))->where($where)->field('a.id,a.title,a.comnum,a.upnum,a.views,a.isTop,a.createTime,a.status,b.cate_name,c.nickname')->order(array('a.isTop'=>'desc','a.id'=>'desc'))->limit(($page-1)*$limit.','.$limit)->select();
 		$pageHtml=pageInation($count,$limit,$page,'',join('&',$search));
 		View::assign('categoryHtml',me_createCateOption($cateId));
 		View::assign('authorHtml',me_createAuthorOption($authorId));
