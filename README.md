@@ -10,7 +10,7 @@ RPCMS是一款基于PHP+MYSQL的轻量型内容管理/博客系统，支持PHP5.
 #### 参与贡献
 
 1.  fl 本仓库
-2.  Dear_hu UI
+2.  Dear_hu UI --hu
 3.  欢乐明 index model
 4.  Zhuang HTML
 
